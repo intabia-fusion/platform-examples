@@ -1,5 +1,5 @@
 //
-// Copyright © 2025 Hardcore Engineering Inc.
+// Copyright © 2025 Intabia Fusion
 //
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -13,22 +13,22 @@
 // limitations under the License.
 //
 
-import { ConnectOptions, NodeWebSocketFactory, connect } from '@hcengineering/api-client'
-import { Ref, SortingOrder, generateId } from '@hcengineering/core'
-import document, { Document } from '@hcengineering/document'
-import { makeRank } from '@hcengineering/rank'
+import { ConnectOptions, NodeWebSocketFactory, connect } from '@intabiafusion/api/api-client'
+import { Ref, SortingOrder, generateId } from '@intabiafusion/api/core'
+import document, { Document } from '@intabiafusion/api/document'
+import { makeRank } from '@intabiafusion/api/rank'
 
-const url = process.env.HULY_URL ?? 'http://localhost:8087'
+const url = process.env.PLATFORM_URL ?? 'http://localhost:8087'
 const options: ConnectOptions = {
-  email: process.env.HULY_EMAIL ?? 'user1',
-  password: process.env.HULY_PASSWORD ?? '1234',
-  workspace: process.env.HULY_WORKSPACE ?? 'ws1',
+  email: process.env.PLATFORM_EMAIL ?? 'user1',
+  password: process.env.PLATFORM_PASSWORD ?? '1234',
+  workspace: process.env.PLATFORM_WORKSPACE ?? 'ws1',
   socketFactory: NodeWebSocketFactory,
   connectionTimeout: 30000
 }
 
 /**
- * Example demonstrating how to create a document using the Huly Platform API.
+ * Example demonstrating how to create a document using the Platform API.
  * This script:
  * 1. Finds a teamspace by name
  * 2. Creates a document in the teamspace

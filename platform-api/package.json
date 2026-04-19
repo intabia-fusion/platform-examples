@@ -1,29 +1,21 @@
 {
   "name": "platform-api",
   "version": "1.0.0",
-  "description": "This guide will help you understand how to interact with the Huly API for various operations by providing examples of authentication, querying issues, updating issues, and creating new issues. Whether you're integrating Huly into your application or building a custom client, the examples provided here will help you get started.",
+  "description": "Examples of using Intabia Fusion API bundle",
   "main": "index.ts",
-  "types": "types/index.d.ts",
   "scripts": {
-    "build": "compile",
-    "start": "ts-node src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "ts-node examples/issue-list.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hcengineering/api-client": "^0.7.3",
-    "@hcengineering/core": "^0.7.4",
-    "@hcengineering/document": "^0.7.0",
-    "@hcengineering/rank": "^0.7.3",
-    "@hcengineering/tracker": "^0.7.0",
-    "@hcengineering/tags": "^0.7.0",
-    "ws": "^8.16.0"
+    "@intabiafusion/api": "^1.0.0",
+    "ws": "^8.18.2"
   },
   "devDependencies": {
-    "@types/node": "^17.0.0",
-    "@types/ws": "^8.5.3",
+    "@types/node": "^22.18.1",
     "ts-node": "^10.8.0",
-    "typescript": "^5.3.3"
+    "typescript": "~5.9.3"
   }
 }

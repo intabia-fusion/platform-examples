@@ -1,5 +1,5 @@
 //
-// Copyright © 2025 Hardcore Engineering Inc.
+// Copyright © 2025 Intabia Fusion
 //
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -13,20 +13,20 @@
 // limitations under the License.
 //
 
-import { ConnectOptions, NodeWebSocketFactory, connect } from '@hcengineering/api-client'
-import contact from '@hcengineering/contact'
+import { ConnectOptions, NodeWebSocketFactory, connect } from '@intabiafusion/api/api-client'
+import contact from '@intabiafusion/api/contact'
 
-const url = process.env.HULY_URL ?? 'http://localhost:8087'
+const url = process.env.PLATFORM_URL ?? 'http://localhost:8087'
 const options: ConnectOptions = {
-  email: process.env.HULY_EMAIL ?? 'user1',
-  password: process.env.HULY_PASSWORD ?? '1234',
-  workspace: process.env.HULY_WORKSPACE ?? 'ws1',
+  email: process.env.PLATFORM_EMAIL ?? 'user1',
+  password: process.env.PLATFORM_PASSWORD ?? '1234',
+  workspace: process.env.PLATFORM_WORKSPACE ?? 'ws1',
   socketFactory: NodeWebSocketFactory,
   connectionTimeout: 30000
 }
 
 /**
- * Example demonstrating how to querypersons using the Huly Platform API.
+ * Example demonstrating how to querypersons using the Platform API.
  * This script:
  * 1. Finds all persons
  * 2. Prints the persons and their contact channels

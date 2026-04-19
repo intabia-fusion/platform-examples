@@ -1,5 +1,5 @@
 //
-// Copyright © 2025 Hardcore Engineering Inc.
+// Copyright © 2025 Intabia Fusion
 //
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -13,25 +13,27 @@
 // limitations under the License.
 //
 
-import { ConnectOptions, NodeWebSocketFactory, connect } from '@hcengineering/api-client'
-import core, { type Ref, SortingOrder, generateId } from '@hcengineering/core'
-import { makeRank } from '@hcengineering/rank'
-import tracker, { type Issue, IssuePriority } from '@hcengineering/tracker'
+import { ConnectOptions, NodeWebSocketFactory, connect } from '@intabiafusion/api/api-client'
+import core, { type Ref, SortingOrder, generateId } from '@intabiafusion/api/core'
+import { makeRank } from '@intabiafusion/api/rank'
+import tracker, { type Issue, IssuePriority } from '@intabiafusion/api/tracker'
+import tags, { type TagElement } from '@intabiafusion/api/tags'
 
-const url = process.env.HULY_URL ?? 'http://localhost:8087'
+const url = process.env.PLATFORM_URL ?? 'http://localhost:8087'
 const options: ConnectOptions = {
-  email: process.env.HULY_EMAIL ?? 'user1',
-  password: process.env.HULY_PASSWORD ?? '1234',
-  workspace: process.env.HULY_WORKSPACE ?? 'ws1',
+  email: process.env.PLATFORM_EMAIL ?? 'user1',
+  password: process.env.PLATFORM_PASSWORD ?? '1234',
+  workspace: process.env.PLATFORM_WORKSPACE ?? 'ws1',
   socketFactory: NodeWebSocketFactory,
   connectionTimeout: 30000
 }
 
 /**
- * Example demonstrating how to create an issue in a project using the Huly Platform API.
+ * Example demonstrating how to assign a label to an issue.
  * This script:
  * 1. Finds a project by identifier
  * 2. Creates a new issue
+ * 3. Assigns a label to the issue
  */
 async function main (): Promise<void> {
   const client = await connect(url, options)
@@ -41,7 +43,7 @@ async function main (): Promise<void> {
     const project = await client.findOne(
       tracker.class.Project,
       {
-        identifier: 'HULY'
+        identifier: process.env.PLATFORM_PROJECT ?? 'TSK'
       }
     )
     if (project === undefined) {
@@ -120,6 +122,36 @@ Enjoy your coffee.
       issueId
     )
 
+    // Create label
+    const labelId: Ref<TagElement> = generateId()
+
+    await client.createDoc(
+      tags.class.TagElement,
+      core.space.Workspace,
+      {
+        title: 'coffee',
+        description: '',
+        targetClass: tracker.class.Issue,
+        color: 11,
+        category: tracker.category.Other
+      },
+      labelId
+    )
+
+    // Assign label to the issue
+    await client.addCollection(
+      tags.class.TagReference,
+      project._id,
+      issueId,
+      tracker.class.Issue,
+      'labels',
+      {
+        title: 'example',
+        color: 11,
+        tag: labelId
+      }
+    )
+
     const issue = await client.findOne(tracker.class.Issue, { _id: issueId })
     if (issue === undefined) {
       throw new Error('Issue not found')
@@ -129,6 +161,19 @@ Enjoy your coffee.
     if (issue.description) {
       const markup = await client.fetchMarkup(issue._class, issue._id, 'description', issue.description, 'markdown') 
       console.log(markup)
+    }
+
+    const labels = await client.findAll(
+      tags.class.TagReference,
+      {
+        attachedTo: issueId,
+        attachedToClass: tracker.class.Issue
+      }
+    )
+
+    // List labels
+    for (const label of labels) {
+      console.log('- label:', label.title)
     }
   } finally {
     await client.close()

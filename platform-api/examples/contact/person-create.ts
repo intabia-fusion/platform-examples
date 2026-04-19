@@ -1,5 +1,5 @@
 //
-// Copyright © 2025 Hardcore Engineering Inc.
+// Copyright © 2025 Intabia Fusion
 //
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -13,21 +13,21 @@
 // limitations under the License.
 //
 
-import { ConnectOptions, NodeWebSocketFactory, connect } from '@hcengineering/api-client'
-import contact, { AvatarType, Person } from '@hcengineering/contact'
-import { generateId } from '@hcengineering/core'
+import { ConnectOptions, NodeWebSocketFactory, connect } from '@intabiafusion/api/api-client'
+import contact, { AvatarType, Person } from '@intabiafusion/api/contact'
+import { generateId } from '@intabiafusion/api/core'
 
-const url = process.env.HULY_URL ?? 'http://localhost:8087'
+const url = process.env.PLATFORM_URL ?? 'http://localhost:8087'
 const options: ConnectOptions = {
-  email: process.env.HULY_EMAIL ?? 'user1',
-  password: process.env.HULY_PASSWORD ?? '1234',
-  workspace: process.env.HULY_WORKSPACE ?? 'ws1',
+  email: process.env.PLATFORM_EMAIL ?? 'user1',
+  password: process.env.PLATFORM_PASSWORD ?? '1234',
+  workspace: process.env.PLATFORM_WORKSPACE ?? 'ws1',
   socketFactory: NodeWebSocketFactory,
   connectionTimeout: 30000
 }
 
 /**
- * Example demonstrating how to create a person using the Huly Platform API.
+ * Example demonstrating how to create a person using the Platform API.
  * This script:
  * 1. Creates a person
  * 2. Adds a email address to the person

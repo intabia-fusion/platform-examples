@@ -1,5 +1,5 @@
 //
-// Copyright © 2025 Hardcore Engineering Inc.
+// Copyright © 2025 Intabia Fusion
 //
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -13,22 +13,22 @@
 // limitations under the License.
 //
 
-import { ConnectOptions, NodeWebSocketFactory, connect } from '@hcengineering/api-client'
-import { SortingOrder } from '@hcengineering/core'
-import task from '@hcengineering/task'
-import tracker from '@hcengineering/tracker'
+import { ConnectOptions, NodeWebSocketFactory, connect } from '@intabiafusion/api/api-client'
+import { SortingOrder } from '@intabiafusion/api/core'
+import task from '@intabiafusion/api/task'
+import tracker from '@intabiafusion/api/tracker'
 
-const url = process.env.HULY_URL ?? 'http://localhost:8087'
+const url = process.env.PLATFORM_URL ?? 'http://localhost:8087'
 const options: ConnectOptions = {
-  email: process.env.HULY_EMAIL ?? 'user1',
-  password: process.env.HULY_PASSWORD ?? '1234',
-  workspace: process.env.HULY_WORKSPACE ?? 'ws1',
+  email: process.env.PLATFORM_EMAIL ?? 'user1',
+  password: process.env.PLATFORM_PASSWORD ?? '1234',
+  workspace: process.env.PLATFORM_WORKSPACE ?? 'ws1',
   socketFactory: NodeWebSocketFactory,
   connectionTimeout: 30000
 }
 
 /**
- * Example demonstrating how to list issues in a project using the Huly Platform API.
+ * Example demonstrating how to list issues in a project using the Platform API.
  * This script:
  * 1. Finds a project by identifier
  * 2. Fetches all issues in the project
@@ -37,19 +37,14 @@ async function main (): Promise<void> {
   const client = await connect(url, options)
 
   try {
-    // Find project by identifier
-    const project = await client.findOne(
-      tracker.class.Project,
-      {
-        identifier: 'HULY'
-      }, {
-        lookup: {
-          type: task.class.ProjectType
-        }
-      }
-    )
+    // List projects (pick first one found)
+    const projects = await client.findAll(tracker.class.Project, {}, {
+      lookup: { type: task.class.ProjectType }
+    })
+    console.log('projects:', projects.map((p) => p.identifier))
+    const project = projects[0]
     if (project === undefined) {
-      throw new Error('Project not found')
+      throw new Error('No projects in workspace')
     }
     console.log('project:', project.identifier, project.description)
     if (project.$lookup?.type !== undefined) {

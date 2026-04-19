@@ -1,5 +1,5 @@
 //
-// Copyright © 2025 Hardcore Engineering Inc.
+// Copyright © 2025 Intabia Fusion
 //
 // Licensed under the Eclipse Public License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License. You may
@@ -13,21 +13,21 @@
 // limitations under the License.
 //
 
-import { NodeWebSocketFactory, connect } from '@hcengineering/api-client'
-import core from '@hcengineering/core'
-import document from '@hcengineering/document'
+import { NodeWebSocketFactory, connect } from '@intabiafusion/api/api-client'
+import core from '@intabiafusion/api/core'
+import document from '@intabiafusion/api/document'
 
-const url = process.env.HULY_URL ?? 'http://localhost:8087'
+const url = process.env.PLATFORM_URL ?? 'http://localhost:8087'
 const options = {
-  email: process.env.HULY_EMAIL ?? 'user1',
-  password: process.env.HULY_PASSWORD ?? '1234',
-  workspace: process.env.HULY_WORKSPACE ?? 'ws1',
+  email: process.env.PLATFORM_EMAIL ?? 'user1',
+  password: process.env.PLATFORM_PASSWORD ?? '1234',
+  workspace: process.env.PLATFORM_WORKSPACE ?? 'ws1',
   socketFactory: NodeWebSocketFactory,
   connectionTimeout: 30000
 }
 
 /**
- * Example demonstrating how to create a teamspace using the Huly Platform API.
+ * Example demonstrating how to create a teamspace using the Platform API.
  * This script:
  * 1. Creates a public teamspace
  * 2. Displays the created teamspace
@@ -36,7 +36,7 @@ async function main (): Promise<void> {
   const client = await connect(url, options)
 
   try {
-    const account = client.getAccount()
+    const account = await client.getAccount()
 
     // Create a teamspace
     const teamspaceId = await client.createDoc(
@@ -47,8 +47,8 @@ async function main (): Promise<void> {
         description: 'Space for my shared documents',
         private: false,
         archived: false,
-        members: [account._id],
-        owners: [account._id],
+        members: [account.uuid],
+        owners: [account.uuid],
         icon: document.icon.Teamspace,
         type: document.spaceType.DefaultTeamspaceType
       }

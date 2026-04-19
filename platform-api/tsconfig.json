@@ -1,12 +1,13 @@
 {
     "compilerOptions": {
     "target": "esnext",
-    "module": "commonjs",
+    "module": "node16",
+    "moduleResolution": "node16",
     "declaration": true,
     "strict": true,
     "sourceMap": true,
     "resolveJsonModule": true,
-    "types": ["node", "jest"],
+    "types": ["node"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "declarationMap": true,
