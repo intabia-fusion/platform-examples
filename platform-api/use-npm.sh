@@ -2,14 +2,14 @@
 #
 # Switch @intabia-fusion/api dependency back to the npm registry.
 # Usage:
-#   ./use-npm.sh             # uses ^1.0.0
+#   ./use-npm.sh             # uses ^1.0.1
 #   ./use-npm.sh 1.2.3       # pin exact version
 #
 set -euo pipefail
 
 cd "$(dirname "$0")"
 
-VERSION="${1:-^1.0.0}"
+VERSION="${1:-^1.0.1}"
 echo "Using npm registry: @intabia-fusion/api@${VERSION}"
 
 node -e "
