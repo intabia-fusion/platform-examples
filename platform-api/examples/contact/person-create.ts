@@ -13,9 +13,9 @@
 // limitations under the License.
 //
 
-import { ConnectOptions, NodeWebSocketFactory, connect } from '@intabiafusion/api/api-client'
-import contact, { AvatarType, Person } from '@intabiafusion/api/contact'
-import { generateId } from '@intabiafusion/api/core'
+import { ConnectOptions, NodeWebSocketFactory, connect } from '@intabia-fusion/api/api-client'
+import contact, { AvatarType, Person } from '@intabia-fusion/api/contact'
+import { generateId } from '@intabia-fusion/api/core'
 
 const url = process.env.PLATFORM_URL ?? 'http://localhost:8087'
 const options: ConnectOptions = {

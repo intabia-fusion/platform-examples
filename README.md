@@ -5,7 +5,7 @@ platform API.
 
 ## Projects
 
-- [`platform-api/`](./platform-api) — Node.js examples for `@intabiafusion/api`:
+- [`platform-api/`](./platform-api) — Node.js examples for `@intabia-fusion/api`:
   REST and WebSocket (LiveQuery) usage across tracker, chunter, contact,
   documents.
 

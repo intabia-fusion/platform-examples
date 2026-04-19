@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@intabiafusion/api": "^1.0.0",
+    "@intabia-fusion/api": "^1.0.0",
     "ws": "^8.18.2"
   },
   "devDependencies": {

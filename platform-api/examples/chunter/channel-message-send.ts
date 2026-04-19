@@ -6,10 +6,10 @@
 // obtain a copy of the License at https://www.eclipse.org/legal/epl-2.0
 //
 
-import { ConnectOptions, NodeWebSocketFactory, connect } from '@intabiafusion/api/api-client'
-import { SortingOrder, generateId, type Markup } from '@intabiafusion/api/core'
-import chunter, { type ChatMessage, type ThreadMessage } from '@intabiafusion/api/chunter'
-import { htmlToMarkup } from '@intabiafusion/api/text'
+import { ConnectOptions, NodeWebSocketFactory, connect } from '@intabia-fusion/api/api-client'
+import { SortingOrder, generateId, type Markup } from '@intabia-fusion/api/core'
+import chunter, { type ChatMessage, type ThreadMessage } from '@intabia-fusion/api/chunter'
+import { htmlToMarkup } from '@intabia-fusion/api/text'
 
 const url = process.env.PLATFORM_URL ?? 'http://localhost:8087'
 const options: ConnectOptions = {

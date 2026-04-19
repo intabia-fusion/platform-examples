@@ -6,10 +6,10 @@
 // obtain a copy of the License at https://www.eclipse.org/legal/epl-2.0
 //
 
-import { ConnectOptions, NodeWebSocketFactory, connect } from '@intabiafusion/api/api-client'
-import core, { type Ref, SortingOrder, generateId } from '@intabiafusion/api/core'
-import { makeRank } from '@intabiafusion/api/rank'
-import tracker, { type Issue, IssuePriority } from '@intabiafusion/api/tracker'
+import { ConnectOptions, NodeWebSocketFactory, connect } from '@intabia-fusion/api/api-client'
+import core, { type Ref, SortingOrder, generateId } from '@intabia-fusion/api/core'
+import { makeRank } from '@intabia-fusion/api/rank'
+import tracker, { type Issue, IssuePriority } from '@intabia-fusion/api/tracker'
 
 const url = process.env.PLATFORM_URL ?? 'http://localhost:8087'
 const options: ConnectOptions = {

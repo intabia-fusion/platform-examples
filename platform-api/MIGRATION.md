@@ -1,4 +1,4 @@
-# Migration Guide — `@intabiafusion/api` bundle
+# Migration Guide — `@intabia-fusion/api` bundle
 
 Single bundle replacing many `@intabiafusion/*` packages.
 
@@ -6,7 +6,7 @@ Single bundle replacing many `@intabiafusion/*` packages.
 
 Before:
 ```ts
-import { connect } from '@intabiafusion/api-client'
+import { connect } from '@intabia-fusion/api-client'
 import core, { type Ref } from '@intabiafusion/core'
 import tracker, { type Issue } from '@intabiafusion/tracker'
 import { LiveQuery } from '@intabiafusion/query'
@@ -14,10 +14,10 @@ import { LiveQuery } from '@intabiafusion/query'
 
 After:
 ```ts
-import { connect } from '@intabiafusion/api/api-client'
-import core, { type Ref } from '@intabiafusion/api/core'
-import tracker, { type Issue } from '@intabiafusion/api/tracker'
-import { LiveQuery } from '@intabiafusion/api/query'
+import { connect } from '@intabia-fusion/api/api-client'
+import core, { type Ref } from '@intabia-fusion/api/core'
+import tracker, { type Issue } from '@intabia-fusion/api/tracker'
+import { LiveQuery } from '@intabia-fusion/api/query'
 ```
 
 Bundled roots: `api-client`, `account-client`, `client`, `client-resources`,
@@ -29,7 +29,7 @@ Bundled roots: `api-client`, `account-client`, `client`, `client-resources`,
 ```json
 {
   "dependencies": {
-    "@intabiafusion/api": "^1.0.0",
+    "@intabia-fusion/api": "^1.0.0",
     "ws": "^8.18.2"
   }
 }

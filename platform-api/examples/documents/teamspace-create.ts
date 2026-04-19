@@ -13,9 +13,9 @@
 // limitations under the License.
 //
 
-import { NodeWebSocketFactory, connect } from '@intabiafusion/api/api-client'
-import core from '@intabiafusion/api/core'
-import document from '@intabiafusion/api/document'
+import { NodeWebSocketFactory, connect } from '@intabia-fusion/api/api-client'
+import core from '@intabia-fusion/api/core'
+import document from '@intabia-fusion/api/document'
 
 const url = process.env.PLATFORM_URL ?? 'http://localhost:8087'
 const options = {

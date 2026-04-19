@@ -13,10 +13,10 @@
 // limitations under the License.
 //
 
-import { ConnectOptions, NodeWebSocketFactory, connect } from '@intabiafusion/api/api-client'
-import { SortingOrder } from '@intabiafusion/api/core'
-import task from '@intabiafusion/api/task'
-import tracker from '@intabiafusion/api/tracker'
+import { ConnectOptions, NodeWebSocketFactory, connect } from '@intabia-fusion/api/api-client'
+import { SortingOrder } from '@intabia-fusion/api/core'
+import task from '@intabia-fusion/api/task'
+import tracker from '@intabia-fusion/api/tracker'
 
 const url = process.env.PLATFORM_URL ?? 'http://localhost:8087'
 const options: ConnectOptions = {

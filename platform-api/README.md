@@ -1,18 +1,18 @@
 # platform-api examples
 
-Examples for `@intabiafusion/api` — single publishable bundle for Intabia Fusion
+Examples for `@intabia-fusion/api` — single publishable bundle for Intabia Fusion
 platform API.
 
 ## Install
 
-By default uses `@intabiafusion/api` from the npm registry:
+By default uses `@intabia-fusion/api` from the npm registry:
 ```bash
 npm install
 ```
 
 ### Use a local tarball
 
-Download `intabiafusion-api-<version>.tgz` (from a CI artifact or
+Download `intabia-fusion-api-<version>.tgz` (from a CI artifact or
 `dev/api/bundle` in the foundation repo) into `./tarballs/`, then:
 ```bash
 ./use-local.sh                          # newest tarball in ./tarballs/
